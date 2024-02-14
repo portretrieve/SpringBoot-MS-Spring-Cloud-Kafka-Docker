@@ -19,7 +19,7 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody @Valid ProductRequestDTO productRequest) {
+    public void addProduct(@RequestBody @Valid ProductRequestDTO productRequest) {
         productServiceImpl.addProduct(productRequest);
     }
 
