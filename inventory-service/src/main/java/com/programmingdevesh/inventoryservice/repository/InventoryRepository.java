@@ -1,7 +1,6 @@
 package com.programmingdevesh.inventoryservice.repository;
 
-import com.programmingdevesh.inventoryservice.dto.InventoryItemDTO;
-import com.programmingdevesh.inventoryservice.model.InventoryItem;
+import com.programmingdevesh.inventoryservice.entity.InventoryItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

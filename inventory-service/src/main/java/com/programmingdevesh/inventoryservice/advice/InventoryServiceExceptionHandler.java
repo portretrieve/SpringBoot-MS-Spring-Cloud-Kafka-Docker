@@ -15,7 +15,7 @@ public class InventoryServiceExceptionHandler {
     @ExceptionHandler(ItemNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleItemNotFoundException(ItemNotFoundException itemNotFoundException){
         Map<String, String> errorMap = new HashMap<String, String>();
-        errorMap.put("NOT FOUND ERROR", itemNotFoundException.getMessage());
+        errorMap.put("ERROR NOT FOUND", itemNotFoundException.getMessage());
         return new ResponseEntity<>(errorMap, HttpStatus.NOT_FOUND);
     }
 

@@ -1,6 +1,6 @@
 package com.programmingdevesh.inventoryservice;
 
-import com.programmingdevesh.inventoryservice.model.InventoryItem;
+import com.programmingdevesh.inventoryservice.entity.InventoryItem;
 import com.programmingdevesh.inventoryservice.repository.InventoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
