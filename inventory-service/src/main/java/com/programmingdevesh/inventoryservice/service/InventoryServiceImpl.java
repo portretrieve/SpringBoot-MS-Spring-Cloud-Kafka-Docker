@@ -41,6 +41,18 @@ public class InventoryServiceImpl implements InventoryService {
                 .toList();
     }
 
+    public InventoryItemDTO addInventotyItem(InventoryItemDTO inventoryItemDTO){
+        return mapInventoryItemToInventoryItemDTO
+                (inventoryRepository.save(mapDtoToInventoryItem(inventoryItemDTO)));
+    }
+
+    private InventoryItem mapDtoToInventoryItem(InventoryItemDTO inventoryItemDTO) {
+        InventoryItem item = new InventoryItem();
+        item.setItemName(inventoryItemDTO.getItemName());
+        item.setQuantity(inventoryItemDTO.getQuantity());
+        return item;
+    }
+
     private InventoryItemDTO mapInventoryItemToInventoryItemDTO(InventoryItem inventoryItem){
         return new InventoryItemDTO(inventoryItem.getItemName(), inventoryItem.getQuantity());
     }

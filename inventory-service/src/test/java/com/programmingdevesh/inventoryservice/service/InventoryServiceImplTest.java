@@ -4,7 +4,6 @@ import com.programmingdevesh.inventoryservice.CustomExceptions.ItemNotFoundExcep
 import com.programmingdevesh.inventoryservice.dto.InventoryItemDTO;
 import com.programmingdevesh.inventoryservice.entity.InventoryItem;
 import com.programmingdevesh.inventoryservice.repository.InventoryRepository;
-import org.aspectj.lang.annotation.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.times;
@@ -32,7 +30,7 @@ public class InventoryServiceImplTest {
     }
 
     @Test
-    public void fetchItemByItemNameTest() throws ItemNotFoundException{
+    public void fetchItemByItemNameTest() throws ItemNotFoundException {
         String itemName = "Laptop";
         InventoryItem inventoryItem = new InventoryItem(1L, "Laptop", 10);
         InventoryItemDTO inventoryItemDTO = new InventoryItemDTO("Laptop", 10);

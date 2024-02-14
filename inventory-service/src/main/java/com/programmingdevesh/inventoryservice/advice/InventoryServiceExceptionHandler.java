@@ -3,6 +3,7 @@ package com.programmingdevesh.inventoryservice.advice;
 import com.programmingdevesh.inventoryservice.CustomExceptions.ItemNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -19,5 +20,13 @@ public class InventoryServiceExceptionHandler {
         return new ResponseEntity<>(errorMap, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, String>> handleInvalidArgumentException(MethodArgumentNotValidException invalidDataProvidedException){
+        Map<String, String> errorMap = new HashMap<>();
+        invalidDataProvidedException.getBindingResult().getFieldErrors()
+                .forEach(fieldError -> errorMap.put(fieldError.getField(), fieldError.getDefaultMessage()));
+        return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
+    }
+    
 
 }

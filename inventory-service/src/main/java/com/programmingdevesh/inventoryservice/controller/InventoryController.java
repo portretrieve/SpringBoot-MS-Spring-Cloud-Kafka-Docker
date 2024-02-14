@@ -4,6 +4,7 @@ import com.programmingdevesh.inventoryservice.CustomExceptions.ItemNotFoundExcep
 import com.programmingdevesh.inventoryservice.dto.InventoryItemDTO;
 import com.programmingdevesh.inventoryservice.dto.InventoryItemResponse;
 import com.programmingdevesh.inventoryservice.service.InventoryServiceImpl;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +28,19 @@ public class InventoryController {
         this.inventoryServiceImpl = inventoryServiceImpl;
     }
 
+    @PostMapping("/addItem")
+    public ResponseEntity<InventoryItemDTO> addInventoryItem(@RequestBody @Valid InventoryItemDTO inventoryItemDTO){
+        InventoryItemDTO itemDTO = inventoryServiceImpl.addInventotyItem(inventoryItemDTO);
+        return new ResponseEntity<>(itemDTO, HttpStatus.CREATED);
+    }
+
     @GetMapping("/{itemName}")
     public ResponseEntity<InventoryItemDTO> fetchInventoryItemByItemName(@PathVariable String itemName) throws ItemNotFoundException {
         logger.info("Inside InventoryController. Fetching Inventory Item By itemName started.");
       try{
           InventoryItemDTO inventoryItemDTO = inventoryServiceImpl.fetchItemByItemName(itemName);
           return new ResponseEntity<>(inventoryItemDTO, HttpStatus.OK);
-      }catch (ItemNotFoundException itemNotFoundException){
-            throw itemNotFoundException;
-      }finally {
+      } finally {
           logger.info("Inside InventoryController. Fetching Inventory Item By itemName ended.");
       }
     }
