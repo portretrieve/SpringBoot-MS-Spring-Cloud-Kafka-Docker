@@ -19,31 +19,31 @@ public class InventoryServiceApplication {
 	public CommandLineRunner loadData(InventoryRepository inventoryRepository){
 		return args -> {
 			InventoryItem inventoryItem1 = new InventoryItem();
-			inventoryItem1.setSkuCode("Phone");
+			inventoryItem1.setItemName("Phone");
 			inventoryItem1.setQuantity(100);
 
 			InventoryItem inventoryItem2 = new InventoryItem();
-			inventoryItem2.setSkuCode("Laptop");
+			inventoryItem2.setItemName("Laptop");
 			inventoryItem2.setQuantity(50);
 
 			InventoryItem inventoryItem3 = new InventoryItem();
-			inventoryItem3.setSkuCode("Desktop");
+			inventoryItem3.setItemName("Desktop");
 			inventoryItem3.setQuantity(75);
 
 			InventoryItem inventoryItem4 = new InventoryItem();
-			inventoryItem4.setSkuCode("Speeker");
+			inventoryItem4.setItemName("Speeker");
 			inventoryItem4.setQuantity(500);
 
 			InventoryItem inventoryItem5 = new InventoryItem();
-			inventoryItem5.setSkuCode("Earbud");
+			inventoryItem5.setItemName("Earbud");
 			inventoryItem5.setQuantity(1000);
 
 			InventoryItem inventoryItem6 = new InventoryItem();
-			inventoryItem6.setSkuCode("Monitor");
+			inventoryItem6.setItemName("Monitor");
 			inventoryItem6.setQuantity(250);
 
 			InventoryItem inventoryItem7 = new InventoryItem();
-			inventoryItem7.setSkuCode("Hard Disk");
+			inventoryItem7.setItemName("Hard Disk");
 			inventoryItem7.setQuantity(300);
 
 			inventoryRepository.save(inventoryItem1);
