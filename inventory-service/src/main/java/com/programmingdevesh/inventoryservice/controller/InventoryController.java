@@ -28,7 +28,7 @@ public class InventoryController {
     }
 
     @GetMapping("/{itemName}")
-    public ResponseEntity<InventoryItemDTO> fetchInventoryItemByitemName(@PathVariable String itemName) throws ItemNotFoundException {
+    public ResponseEntity<InventoryItemDTO> fetchInventoryItemByItemName(@PathVariable String itemName) throws ItemNotFoundException {
         logger.info("Inside InventoryController. Fetching Inventory Item By itemName started.");
       try{
           InventoryItemDTO inventoryItemDTO = inventoryServiceImpl.fetchItemByItemName(itemName);
