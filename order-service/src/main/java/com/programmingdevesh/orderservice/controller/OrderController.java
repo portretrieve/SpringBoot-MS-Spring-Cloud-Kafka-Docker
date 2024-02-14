@@ -1,7 +1,7 @@
 package com.programmingdevesh.orderservice.controller;
 
 import com.programmingdevesh.orderservice.dto.NewOrderRequestDTO;
-import com.programmingdevesh.orderservice.service.OrderService;
+import com.programmingdevesh.orderservice.service.OrderServiceImpl;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class OrderController {
 
     @Autowired
-    private OrderService orderService;
+    private OrderServiceImpl orderServiceImpl;
 
     Logger logger = LoggerFactory.getLogger(OrderController.class);
 
@@ -29,7 +29,7 @@ public class OrderController {
     @CircuitBreaker(name = "InventoryCircuitBreaker", fallbackMethod = "fallbackMethod")
     public String placeOrder(@RequestBody NewOrderRequestDTO newOrderRequestDTO){
         logger.info("In Order Controller: Started to place the order.");
-        orderService.placeOrder(newOrderRequestDTO);
+        orderServiceImpl.placeOrder(newOrderRequestDTO);
         return "Order placed successfully";
     }
 
